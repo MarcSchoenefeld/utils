@@ -25,3 +25,11 @@ for l in tok:
         if r==0:
             break
         #print r
+    if l.find(".m3u8") >0:
+        k = l.split("\"")
+        print k[1]
+        if fileout=="":
+            fileout = k[1].split("/")[-2]
+        r = subprocess.check_output(["ffmpeg","-i",k[1],fileout])
+        if r==0:
+            break
