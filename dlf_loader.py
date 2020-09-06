@@ -21,7 +21,8 @@ for l in tok:
         print k[1]
         if fileout=="":
             fileout = k[1].split("/")[-1]
-        r = subprocess.check_output(["curl",k[1],"--output",fileout])
+        r = subprocess.check_output(["curl",k[1],"-C","-","--output",fileout])
+        print r 
         if r==0:
             break
         #print r
@@ -30,6 +31,7 @@ for l in tok:
         print k[1]
         if fileout=="":
             fileout = k[1].split("/")[-2]
-        r = subprocess.check_output(["ffmpeg","-i",k[1],fileout])
+        r = subprocess.check_output(["ffmpeg","-n","-i",k[1],fileout])
+        print r
         if r==0:
             break
